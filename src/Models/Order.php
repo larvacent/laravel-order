@@ -78,19 +78,8 @@ class Order extends Model
     {
         parent::boot();
         static::creating(function ($model) {
+            $model->id = $model->generateId();
             $model->status = static::STATUS_PENDING_PAYMENT;
-        });
-        static::created(function ($model) {
-            /** @var Order $model */
-            $model->charge()->create([
-                'user_id' => $model->user_id,
-                'amount' => $model->amount,
-                'channel' => $model->payment_channel,
-                'subject' => trans('order::order.payment_order') . $model->id,
-                'body' => $model->product->getName(),
-                'client_ip' => $model->client_ip,
-                'type' => $model->type,//交易类型
-            ]);
         });
     }
 
@@ -123,6 +112,24 @@ class Order extends Model
     public function product()
     {
         return $this->morphTo();
+    }
+
+    /**
+     * 生成流水号
+     * @return int
+     */
+    public function generateId()
+    {
+        $i = rand(0, 9999);
+        do {
+            if (9999 == $i) {
+                $i = 0;
+            }
+            $i++;
+            $id = time() . str_pad($i, 4, '0', STR_PAD_LEFT);
+            $row = static::where('id', '=', $id)->exists();
+        } while ($row);
+        return $id;
     }
 
     /**
