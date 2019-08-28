@@ -17,8 +17,8 @@ use Larva\Transaction\Models\Charge;
  * @property string $id
  * @property int $user_id
  * @property int $amount
- * @property string $channel
- * @property string $type
+ * @property string $payment_channel 支付渠道
+ * @property string $payment_type 支付类型
  * @property string $status
  * @property string $client_ip
  * @property string $created_at

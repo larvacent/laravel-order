@@ -20,9 +20,9 @@ class CreateOrdersTable extends Migration
 
             $table->unsignedInteger('quantity')->default(1)->comment('购买数量');
 
-            $table->unsignedBigInteger('user_address_id')->nullable();
-            $table->string('channel', 10);
-            $table->string('type', 10);
+            $table->unsignedBigInteger('user_address_id')->nullable()->comment('收货地址ID');
+            $table->string('payment_channel', 10)->nullable()->comment('支付渠道');
+            $table->string('payment_type', 10)->nullable()->comment('支付类型');
             $table->unsignedInteger('amount')->default(0);
             $table->ipAddress('client_ip')->nullable();//发起支付请求客户端的 IP 地址
             $table->string('status', 20);
