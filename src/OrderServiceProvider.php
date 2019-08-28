@@ -32,7 +32,7 @@ class OrderServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //$this->loadViewsFrom(__DIR__.'/../resources/views', 'integral');
+        //$this->loadViewsFrom(__DIR__.'/../resources/views', 'order');
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../database/migrations' => database_path('migrations'),

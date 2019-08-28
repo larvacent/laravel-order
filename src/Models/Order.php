@@ -36,7 +36,6 @@ class Order extends Model
     const STATUS_SUCCEEDED_PAYMENT = 'Succeeded Payment';//付款成功
     const STATUS_FAILED_PAYMENT = 'Payment failed';//付款失败
     const STATUS_CLOSE = 'Close';//订单关闭
-
     const STATUS_PREPARING_GOODS = 'Preparing goods';//正在备货
     const STATUS_SHIPPED = 'Shipped';//已经发货
     const STATUS_SUCCEEDED = 'succeeded';//交易成功
