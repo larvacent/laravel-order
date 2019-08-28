@@ -85,7 +85,7 @@ class Order extends Model
             $model->charge()->create([
                 'user_id' => $model->user_id,
                 'amount' => $model->amount,
-                'channel' => $model->channel,
+                'channel' => $model->payment_channel,
                 'subject' => trans('order::order.payment_order') . $model->id,
                 'body' => $model->product->getName(),
                 'client_ip' => $model->client_ip,

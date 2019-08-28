@@ -41,11 +41,11 @@ class OrderRepository
             $order->charge()->create([
                 'user_id' => $order->user_id,
                 'amount' => $order->amount,
-                'channel' => $channel ? $channel : $order->channel,
+                'channel' => $channel ? $channel : $order->payment_channel,
                 'subject' => trans('order::order.payment_order') . $order->id,
                 'body' => $order->product->getName(),
                 'client_ip' => $order->client_ip,
-                'type' => $type ? $type : $order->type,//交易类型
+                'type' => $type ? $type : $order->payment_type,//交易类型
             ]);
             return $order->charge->credential;
         } else {
