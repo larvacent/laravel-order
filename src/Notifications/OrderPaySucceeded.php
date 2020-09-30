@@ -67,8 +67,8 @@ class OrderPaySucceeded extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject(Lang::getFromJson('Integral recharge succeeded'))
-            ->line(Lang::getFromJson('Your recharge integral is :integral', ['integral' => $this->recharge->transaction->integral]))
-            ->line(Lang::getFromJson('Thank you for choosing, we will be happy to help you in the process of your subsequent use of the service.'));
+            ->subject(Lang::get('Order recharge succeeded'))
+            ->line(Lang::get('Your recharge integral is :integral', ['integral' => $this->order->transaction->integral]))
+            ->line(Lang::get('Thank you for choosing, we will be happy to help you in the process of your subsequent use of the service.'));
     }
 }

@@ -36,19 +36,19 @@ class OrderServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../database/migrations' => database_path('migrations'),
-            ], 'integral');
+            ], 'order');
 
             $this->publishes([
-                __DIR__ . '/../translations' => resource_path('lang/vendor/integral'),
-            ], 'integral');
+                __DIR__ . '/../translations' => resource_path('lang/vendor/order'),
+            ], 'order');
 
             $this->publishes([
-                dirname(__DIR__) . '/config/integral.php' => config_path('integral.php'),],
-                'integral'
+                dirname(__DIR__) . '/config/order.php' => config_path('order.php'),],
+                'order'
             );
         }
 
-        $this->loadTranslationsFrom(__DIR__ . '/../translations', 'integral');
+        $this->loadTranslationsFrom(__DIR__ . '/../translations', 'order');
 
         // Transaction
         Event::listen(ChargeClosed::class, ChargeClosedListener::class);//支付关闭

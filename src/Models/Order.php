@@ -38,9 +38,9 @@ class Order extends Model
     const STATUS_CLOSE = 'Close';//订单关闭
     const STATUS_PREPARING_GOODS = 'Preparing goods';//正在备货
     const STATUS_SHIPPED = 'Shipped';//已经发货
-    const STATUS_SUCCEEDED = 'succeeded';//交易成功
-    const STATUS_RETURN = 'return';//退货
-    const STATUS_RETURNED = 'returned';//已退货
+    const STATUS_SUCCEEDED = 'Succeeded';//交易成功
+    const STATUS_RETURN = 'Return';//退货
+    const STATUS_RETURNED = 'Returned';//已退货
 
     /**
      * 与模型关联的数据表。
@@ -91,7 +91,7 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo(
-            config('auth.providers.' . config('auth.guards.api.provider') . '.model')
+            config('auth.providers.' . config('auth.guards.web.provider') . '.model')
         );
     }
 
